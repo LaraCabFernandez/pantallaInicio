@@ -7,32 +7,53 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+
+//ATENCION ESTO ES UN ESQUELETO PROVISIONAL
+
 @Composable
 fun inicioPantalla() {
     var items by rememberSaveable { mutableStateOf(listOf("Frigorífico", "Lavadora", "Microondas", "Plancha", "Lavavajillas", "Horno", "Secadora")) }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text(text = "Lista de Electrodomésticos", style = MaterialTheme.typography.headlineSmall)
+    Column(
+        modifier = Modifier
+            .fillMaxSize() // De momento que ocupe toda la pantalla
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "Lista de Electrodomésticos",
+            style = MaterialTheme.typography.headlineSmall
+        )
 
-        LazyColumn(modifier = Modifier.weight(1f)) {
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f) // Ocupa el espacio restante en la pantalla
+                .fillMaxWidth() // El ancho completo
+        ) {
             items(items) { item ->
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(8.dp),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
-                    Text(text = item, modifier = Modifier.padding(16.dp))
+                    Text(
+                        text = item,
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
             }
         }
 
-        Button(onClick = {
-            items = items + "Nuevo Electrodoméstico ${items.size + 1}"
-        }, modifier = Modifier.fillMaxWidth()) {
+        Button(
+            onClick = {
+                items = items + "Nuevo Electrodoméstico ${items.size + 1}"
+            },
+            modifier = Modifier.fillMaxWidth() //Hay que hacer varias pruebas
+        ) {
             Text("Agregar Electrodoméstico")
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewInicioPantalla() {
