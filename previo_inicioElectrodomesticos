@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun inicioPantalla() {
-    var items by remember{mutableStateOf(listOf("Frigorífico","Lavadora", "Microondas", "Plancha", "Lavavajillas", "Horno", "Secadora"))}
+    var items by rememberSaveable { mutableStateOf(listOf("Frigorífico", "Lavadora", "Microondas", "Plancha", "Lavavajillas", "Horno", "Secadora")) }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(text = "Lista de Electrodomésticos", style = MaterialTheme.typography.headlineSmall)
@@ -35,6 +35,7 @@ fun inicioPantalla() {
 
 @Preview(showBackground = true)
 @Composable
-fun inicioPantalla() {
+fun PreviewInicioPantalla() {
     inicioPantalla()
 }
+
